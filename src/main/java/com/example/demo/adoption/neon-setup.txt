@@ -1,0 +1,58 @@
+==================================================
+SECOND-CHANCE: NEON DATABASE SETUP GUIDE
+==================================================
+
+We are using a shared cloud PostgreSQL database (Neon). This means we all connect to the SAME database. You do not need to install Postgres on your laptop.
+
+SECURITY WARNING: 
+Do NOT put the actual database password in your code or commit it to GitHub. We are using an Environment Variable to keep it safe.
+
+--------------------------------------------------
+STEP 1: PULL THE LATEST CODE
+--------------------------------------------------
+Make sure you are on the correct branch and pull the latest changes.
+The `application.properties` file is already set up. It looks like this:
+
+spring.datasource.url=jdbc:postgresql://ep-curly-forest-b9slsw2d.c-7.eu-central-1.aws.neon.tech/neondb
+spring.datasource.username=neondb_owner
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+Notice the password is `${DB_PASSWORD}`. Spring Boot will look for this in your computer's environment.
+
+--------------------------------------------------
+STEP 2: SET THE PASSWORD IN VS CODE (Do this once)
+--------------------------------------------------
+You need to tell VS Code what the `DB_PASSWORD` is. 
+I will send you the actual password privately (or check the pinned message).
+
+1. Open VS Code.
+2. Go to the "Run and Debug" tab on the left (the play button with the bug).
+3. Click "create a launch.json file".
+4. Select "Java" (or Spring Boot).
+5. In the `launch.json` file that opens, find the configuration for your app.
+6. Add an "env" block inside the configuration. It should look like this:
+
+{
+    "type": "java",
+    "name": "Spring Boot-DemoApplication",
+    "request": "launch",
+    "cwd": "${workspaceFolder}",
+    "mainClass": "com.example.demo.DemoApplication",
+    "projectName": "demo",
+    "env": {
+        "DB_PASSWORD": "PASTE_THE_REAL_PASSWORD_HERE"
+    }
+}
+
+7. Save the `launch.json` file.
+(Note: `launch.json` is usually ignored by Git, so your password stays safe).
+
+--------------------------------------------------
+3: RUN THE APP
+
+1. Open `DemoApplication.java`.
+2. Hit Run.
+3. If it says "Tomcat started on port 8080" and no red errors, you are successfully connected to the Cloud Database!
+
+If you have any errors, paste the error message in the group chat.
