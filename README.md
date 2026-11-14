@@ -5,8 +5,8 @@ Një platformë e unifikuar për menaxhimin e strehimoreve, kujdesit veterinar d
 
 | Anëtari | Paketat / Klasat |
 | :--- | :--- |
-| **Elsa Rizani** | `moduli adoption`, <br> Klasat: `Dog`, `DogPhoto`, `AdoptionApplication`, `AdoptionContract` |
-| **Lena Gashi** | `moduli donations-community` <br> Klasat: `Donation`, `Payment`, `Notification`, `Announcement` |
-| **Sharr Ismaili** | `moduli veterinary` <br> Klasat: `Clinic`, `MedicalRecord`, `Vaccination`, `Appointment` |
-| **Anesa Shylemaja** | `moduli shelter-rescue` <br> Klasat: `Shelter`, `Tools`, `StrayReport`, `CaptureRecord`, `SurrenderRecord`, `EmergencyCase` |
-| **Të gjithë** | `moduli identity` <br> Klasat: `User`, `CitizenProfile`, `StaffProfile`, `AuditLog` |
+| **Elsa Rizani** | Moduli Adoption, <br> Klasat: `Dog`, `DogPhoto`, `AdoptionApplication`, `AdoptionContract` |
+| **Lena Gashi** | Moduli Donations-Community, <br> Klasat: `Donation`, `Payment`, `Notification`, `Announcement` |
+| **Sharr Ismaili** | Moduli Veterinary ,<br> Klasat: `Clinic`, `MedicalRecord`, `Vaccination`, `Appointment` |
+| **Anesa Shylemaja** | Moduli Shelter-Rescue, <br> Klasat: `Shelter`, `Tools`, `StrayReport`, `CaptureRecord`, `SurrenderRecord`, `EmergencyCase` |
+| **Të gjithë** | Moduli Identity, <br> Klasat: `User`, `CitizenProfile`, `StaffProfile`, `AuditLog` |
