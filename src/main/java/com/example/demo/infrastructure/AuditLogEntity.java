@@ -1,7 +1,7 @@
 package com.example.demo.infrastructure;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "audit_logs")
@@ -11,13 +11,12 @@ public class AuditLogEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
     private String action;
-
     private LocalDateTime timestamp;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -26,12 +25,12 @@ public class AuditLogEntity {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public String getAction() {

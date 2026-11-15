@@ -13,7 +13,10 @@ public class AdoptionContractEntity {
     private Long id;
     private LocalDate contractDate;
     private boolean feePaid;
-    private Long applicationId;
+
+    @OneToOne
+    @JoinColumn(name = "application_id")
+    private AdoptionApplicationEntity application;
     
     public Long getId() {
         return id;
@@ -33,13 +36,12 @@ public class AdoptionContractEntity {
     public void setFeePaid(boolean feePaid) {
         this.feePaid = feePaid;
     }
-    public Long getApplicationId() {
-        return applicationId;
+    public AdoptionApplicationEntity getApplication() {
+        return application;
     }
-    public void setApplicationId(Long applicationId) {
-        this.applicationId = applicationId;
+    public void setApplication(AdoptionApplicationEntity application) {
+        this.application = application;
     }
-
 
 
 }

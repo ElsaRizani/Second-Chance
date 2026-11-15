@@ -11,19 +11,19 @@ public class StaffEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long userid;
-    
-    private String employeeId;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+    // private String employeeId;
 
     @Enumerated(EnumType.STRING)
     private JobTitleEnum jobTitle;
 
     private String licenseNumber;
 
-    private Long shelterId;
+    // private Long shelterId;
 
-    private Long clinicId;
+    // private Long clinicId;
 
     // Getters and Setters
     public Long getId() {
@@ -34,21 +34,13 @@ public class StaffEntity {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userid;
-    }
+    // public String getEmployeeId() {
+    // return employeeId;
+    // }
 
-    public void setUserId(Long userid) {
-        this.userid = userid;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
+    // public void setEmployeeId(String employeeId) {
+    // this.employeeId = employeeId;
+    // }
 
     public JobTitleEnum getJobTitle() {
         return jobTitle;
@@ -66,19 +58,28 @@ public class StaffEntity {
         this.licenseNumber = licenseNumber;
     }
 
-    public Long getShelterId() {
-        return shelterId;
+    // public Long getShelterId() {
+    // return shelterId;
+    // }
+
+    // public void setShelterId(Long shelterId) {
+    // this.shelterId = shelterId;
+    // }
+
+    // public Long getClinicId() {
+    // return clinicId;
+    // }
+
+    // public void setClinicId(Long clinicId) {
+    // this.clinicId = clinicId;
+    // }
+
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setShelterId(Long shelterId) {
-        this.shelterId = shelterId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
-    public Long getClinicId() {
-        return clinicId;
-    }
-
-    public void setClinicId(Long clinicId) {
-        this.clinicId = clinicId;
-    }
 }
