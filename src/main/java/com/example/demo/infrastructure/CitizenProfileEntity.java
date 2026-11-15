@@ -1,20 +1,19 @@
-package com.example.demo.infrastructure; 
+package com.example.demo.infrastructure;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "citizenProfile") 
-public class CitizenProfileEntity{
+@Table(name = "citizenProfile")
+public class CitizenProfileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; 
-
-    private Long userid;
-    
+    private Long id;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
     private String address;
-
     private String phone;
-
 
     // Getters and Setters
     public Long getId() {
@@ -23,14 +22,6 @@ public class CitizenProfileEntity{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userid;
-    }
-
-    public void setUserId(Long userid) {
-        this.userid = userid;
     }
 
     public String getAddress() {
@@ -49,5 +40,12 @@ public class CitizenProfileEntity{
         this.phone = phone;
     }
 
-    
+    public UserEntity getUserid() {
+        return user;
+    }
+
+    public void setUserid(UserEntity userid) {
+        this.user = userid;
+    }
+
 }

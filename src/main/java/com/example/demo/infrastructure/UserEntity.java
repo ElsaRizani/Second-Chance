@@ -1,24 +1,34 @@
-package com.example.demo.infrastructure; 
+package com.example.demo.infrastructure;
+
+import java.util.List;
+
 import com.example.demo.domain.RoleEnum;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users") 
+@Table(name = "users")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; 
-
+    private Long id;
     private String email;
-    
     private String passwordHash;
-
-    @Enumerated(EnumType.STRING) 
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
-
     private String fullName;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private CitizenProfileEntity citizenProfile;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private StaffEntity staffProfile;
+
+    @OneToMany(mappedBy = "user")
+    private List<AuditLogEntity> auditLogs;
+
+    
 
     // Getters and Setters
     public Long getId() {
@@ -60,4 +70,29 @@ public class UserEntity {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
+    public CitizenProfileEntity getCitizenProfile() {
+        return citizenProfile;
+    }
+
+    public void setCitizenProfile(CitizenProfileEntity citizenProfile) {
+        this.citizenProfile = citizenProfile;
+    }
+
+    public StaffEntity getStaffProfile() {
+        return staffProfile;
+    }
+
+    public void setStaffProfile(StaffEntity staffProfile) {
+        this.staffProfile = staffProfile;
+    }
+
+    public List<AuditLogEntity> getAuditLogs() {
+        return auditLogs;
+    }
+
+    public void setAuditLogs(List<AuditLogEntity> auditLogs) {
+        this.auditLogs = auditLogs;
+    }
+
 }

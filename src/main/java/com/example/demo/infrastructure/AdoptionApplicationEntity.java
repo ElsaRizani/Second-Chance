@@ -19,41 +19,69 @@ public class AdoptionApplicationEntity {
         //AUTO (lets hibernate decide).
         //SEQUENCE (uses sequence object).
         //TABLE (uses separate table to track IDs).
-
     private Long id;
-    private Long citizenId;
+
+    @ManyToOne 
+    @JoinColumn (name = "citizen_id")
+    private CitizenProfileEntity citizenId;
+
     private String status;
     private LocalDate applicationDate;
-    private Long dogId;
+
+    @ManyToOne
+    @JoinColumn (name = "dog_id")
+    private DogEntity dogId;
+
+    @OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
+    private AdoptionContractEntity contract;
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getCitizenId() {
+
+    public CitizenProfileEntity getCitizenId() {
         return citizenId;
     }
-    public void setCitizenId(Long citizenId) {
+
+    public void setCitizenId(CitizenProfileEntity citizenId) {
         this.citizenId = citizenId;
     }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
+
     public LocalDate getApplicationDate() {
         return applicationDate;
     }
+
     public void setApplicationDate(LocalDate applicationDate) {
         this.applicationDate = applicationDate;
     }
-    public Long getDogId() {
+
+    public DogEntity getDogId() {
         return dogId;
     }
-    public void setDogId(Long dogId) {
+
+    public void setDogId(DogEntity dogId) {
         this.dogId = dogId;
     }
+
+    public AdoptionContractEntity getContract() {
+        return contract;
+    }
+
+    public void setContract(AdoptionContractEntity contract) {
+        this.contract = contract;
+    }
+
 
 }
