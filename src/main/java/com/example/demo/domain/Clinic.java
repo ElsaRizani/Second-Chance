@@ -3,14 +3,14 @@ import com.example.demo.infrastructure.StaffEntity;
 
 public class Clinic {
     private Long id;
-    private StaffEntity staffID;
+    private Long staffID;
     private String name;
     private int capacity;
     private String address;
     private String contact;
     private int numberOfDogs;
 
-    public Clinic(Long id, StaffEntity staffID, String name, int capacity, String address, String contact, int numberOfDogs){
+    public Clinic(Long id, Long staffID, String name, int capacity, String address, String contact, int numberOfDogs){
         this.id = id;
         this.staffID = staffID;
         this.name = name;
@@ -27,10 +27,10 @@ public class Clinic {
         this.id = id;
     }
 
-    public StaffEntity getStaffID(){
+    public Long getStaffID(){
         return staffID;
     }
-    public void setStaffID(StaffEntity staffID){
+    public void setStaffID(Long staffID){
         this.staffID = staffID;
     }
 
