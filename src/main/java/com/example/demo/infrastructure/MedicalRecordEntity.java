@@ -1,6 +1,6 @@
 package com.example.demo.infrastructure;
 import jakarta.persistence.*;
-
+@Entity 
 public class MedicalRecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

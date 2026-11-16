@@ -2,6 +2,7 @@ package com.example.demo.infrastructure;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
+@Entity
 public class VaccinationsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

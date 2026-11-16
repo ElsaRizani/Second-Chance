@@ -1,14 +1,15 @@
 package com.example.demo.infrastructure;
-import jakarta.persistence.*;
+import java.util.*;
 
+import jakarta.persistence.*;
+@Entity 
 public class ClinicEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "staffid")
-    private StaffEntity staffID; 
+    @OneToMany(mappedBy = "clinic")
+    private List<StaffEntity> staff = new ArrayList<>(); 
 
     private String name;
     private int capacity;
@@ -23,11 +24,11 @@ public class ClinicEntity {
         this.id = id;
     }
 
-    public StaffEntity getStaffID(){
-        return staffID;
+    public List<StaffEntity> getStaff(){
+        return staff;
     }
-    public void setStaffID(StaffEntity staffID){
-        this.staffID = staffID;
+    public void setStaff(List<StaffEntity> staff){
+        this.staff = staff;
     }
 
     public String getName(){
