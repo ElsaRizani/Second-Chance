@@ -8,6 +8,7 @@ public class VaccinationsEntity {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "dogID")
     private DogEntity dogID;
 
     private String vaccineName;

@@ -1,7 +1,7 @@
 package com.example.demo.domain;
 import java.time.LocalDateTime;
 
-public class Vaccinations {
+public class Vaccinations{
     private Long id;
     private Long dogID;
     private String vaccineName;
