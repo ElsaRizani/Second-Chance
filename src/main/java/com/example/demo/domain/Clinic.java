@@ -1,5 +1,4 @@
 package com.example.demo.domain;
-import com.example.demo.infrastructure.StaffEntity;
 
 public class Clinic {
     private Long id;
