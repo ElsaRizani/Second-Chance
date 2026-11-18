@@ -10,13 +10,17 @@ public class StrayReportEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int reporterId;
+    @ManyToOne
+    @JoinColumn(name = "reporter_id")
+    private CitizenProfileEntity reporter;
+
     private String location;
     private String description;
     private String status;
     private String color;
     private String photoURL;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -25,12 +29,12 @@ public class StrayReportEntity {
         this.id = id;
     }
 
-    public int getReporterId() {
-        return reporterId;
+    public CitizenProfileEntity getReporter() {
+        return reporter;
     }
 
-    public void setReporterId(int reporterId) {
-        this.reporterId = reporterId;
+    public void setReporter(CitizenProfileEntity reporter) {
+        this.reporter = reporter;
     }
 
     public String getLocation() {

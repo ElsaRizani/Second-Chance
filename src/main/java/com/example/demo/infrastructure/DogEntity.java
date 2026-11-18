@@ -18,6 +18,15 @@ public class DogEntity {
     @OneToMany (mappedBy = "dog", cascade = CascadeType.ALL)
     private List<DogPhotoEntity> photos;
 
+    @OneToOne (mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    private SurrenderRecordEntity surrenderRecord;
+
+    @OneToOne(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    private CaptureRecordEntity captureRecord;
+
+    @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmergencyCaseEntity> emergencyCases;
+
     public Long getId() {
         return id;
     }
@@ -74,5 +83,27 @@ public class DogEntity {
         this.photos = photos;
     }
 
-    
+    public SurrenderRecordEntity getSurrenderRecord() {
+        return surrenderRecord;
+    }
+
+    public void setSurrenderRecord(SurrenderRecordEntity surrenderRecord) {
+        this.surrenderRecord = surrenderRecord;
+    }
+
+    public CaptureRecordEntity getCaptureRecord() {
+        return captureRecord;
+    }
+
+    public void setCaptureRecord(CaptureRecordEntity captureRecord) {
+        this.captureRecord = captureRecord;
+    }
+
+    public List<EmergencyCaseEntity> getEmergencyCases() {
+        return emergencyCases;
+    }
+
+    public void setEmergencyCases(List<EmergencyCaseEntity> emergencyCases) {
+        this.emergencyCases = emergencyCases;
+    }
 }

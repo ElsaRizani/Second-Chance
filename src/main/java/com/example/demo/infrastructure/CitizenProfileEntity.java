@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "citizenProfile")
@@ -9,11 +10,29 @@ public class CitizenProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
     private String address;
     private String phone;
+
+    @OneToMany(mappedBy = "reporter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<StrayReportEntity> strayReports;
+
+    @OneToMany(mappedBy = "citizen", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SurrenderRecordEntity> surrenderRecords;
+    @OneToMany(mappedBy = "citizen", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CaptureRecordEntity> captureRecords;
+
+    public List<CaptureRecordEntity> getCaptureRecords() {
+        return captureRecords;
+    }
+
+    public void setCaptureRecords(List<CaptureRecordEntity> captureRecords) {
+        this.captureRecords = captureRecords;
+    }
 
     // Getters and Setters
     public Long getId() {
@@ -48,4 +67,19 @@ public class CitizenProfileEntity {
         this.user = userid;
     }
 
+    public List<StrayReportEntity> getStrayReports() {
+        return strayReports;
+    }
+
+    public void setStrayReports(List<StrayReportEntity> strayReports) {
+        this.strayReports = strayReports;
+    }
+
+    public List<SurrenderRecordEntity> getSurrenderRecords() {
+        return surrenderRecords;
+    }
+
+    public void setSurrenderRecords(List<SurrenderRecordEntity> surrenderRecords) {
+        this.surrenderRecords = surrenderRecords;
+    }
 }

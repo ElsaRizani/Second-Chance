@@ -11,10 +11,17 @@ public class CaptureRecordEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int staffId;
-    private int dogId;
     private LocalDate captureDate;
 
+    @ManyToOne
+    @JoinColumn(name = "citizen_id")
+    private CitizenProfileEntity citizen;
+
+    @OneToOne
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -23,27 +30,27 @@ public class CaptureRecordEntity {
         this.id = id;
     }
 
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
-    }
-
-    public int getDogId() {
-        return dogId;
-    }
-
-    public void setDogId(int dogId) {
-        this.dogId = dogId;
-    }
-
     public LocalDate getCaptureDate() {
         return captureDate;
     }
 
     public void setCaptureDate(LocalDate captureDate) {
-        this.captureDate = captureDate;
+        this.captureDate = captureDate != null ? captureDate : LocalDate.now();
+    }
+
+    public CitizenProfileEntity getCitizen() {
+        return citizen;
+    }
+
+    public void setCitizen(CitizenProfileEntity citizen) {
+        this.citizen = citizen;
+    }
+
+    public DogEntity getDog() {
+        return dog;
+    }
+
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 }

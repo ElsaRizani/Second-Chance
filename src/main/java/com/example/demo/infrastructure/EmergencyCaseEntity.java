@@ -11,7 +11,10 @@ public class EmergencyCaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int dogId;
+    @ManyToOne
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
+
     private String description;
     private String status;
     private LocalDate reportedDate;
@@ -24,12 +27,12 @@ public class EmergencyCaseEntity {
         this.id = id;
     }
 
-    public int getDogId() {
-        return dogId;
+    public DogEntity getDog() {
+        return dog;
     }
 
-    public void setDogId(int dogId) {
-        this.dogId = dogId;
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 
     public String getDescription() {
@@ -53,6 +56,6 @@ public class EmergencyCaseEntity {
     }
 
     public void setReportedDate(LocalDate reportedDate) {
-        this.reportedDate = reportedDate;
+        this.reportedDate = reportedDate != null ? reportedDate : LocalDate.now();
     }
 }

@@ -13,11 +13,18 @@ public class SurrenderRecordEntity {
 
     private String name;
     private String lastName;
-    private int citizenId;
     private String reason;
-    private int dogId;
     private LocalDate surrenderDate;
 
+    @ManyToOne
+    @JoinColumn(name = "citizen_id")
+    private CitizenProfileEntity citizen;
+
+    @OneToOne
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -42,14 +49,6 @@ public class SurrenderRecordEntity {
         this.lastName = lastName;
     }
 
-    public int getCitizenId() {
-        return citizenId;
-    }
-
-    public void setCitizenId(int citizenId) {
-        this.citizenId = citizenId;
-    }
-
     public String getReason() {
         return reason;
     }
@@ -58,19 +57,27 @@ public class SurrenderRecordEntity {
         this.reason = reason;
     }
 
-    public int getDogId() {
-        return dogId;
-    }
-
-    public void setDogId(int dogId) {
-        this.dogId = dogId;
-    }
-
     public LocalDate getSurrenderDate() {
         return surrenderDate;
     }
 
     public void setSurrenderDate(LocalDate surrenderDate) {
-        this.surrenderDate = surrenderDate;
+        this.surrenderDate = surrenderDate != null ? surrenderDate : LocalDate.now();
+    }
+
+    public CitizenProfileEntity getCitizen() {
+        return citizen;
+    }
+
+    public void setCitizen(CitizenProfileEntity citizen) {
+        this.citizen = citizen;
+    }
+
+    public DogEntity getDog() {
+        return dog;
+    }
+
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 }

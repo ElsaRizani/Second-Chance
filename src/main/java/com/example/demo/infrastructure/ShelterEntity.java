@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "shelters")
@@ -13,7 +14,13 @@ public class ShelterEntity {
     private String name; 
     private String municipality; 
     private int capacity; 
-    private int managerId; 
+
+    @OneToOne
+    @JoinColumn(name = "manager_id")
+    private StaffEntity manager;
+
+    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ToolsEntity> tools;
 
     public Long getId() {
         return id;
@@ -47,11 +54,19 @@ public class ShelterEntity {
         this.capacity = capacity;
     }
 
-    public int getManagerId() {
-        return managerId;
+    public StaffEntity getManager() {
+        return manager;
     }
 
-    public void setManagerId(int managerId) {
-        this.managerId = managerId;
+    public void setManager(StaffEntity manager) {
+        this.manager = manager;
+    }
+
+    public List<ToolsEntity> getTools() {
+        return tools;
+    }
+
+    public void setTools(List<ToolsEntity> tools) {
+        this.tools = tools;
     }
 }
