@@ -1,6 +1,7 @@
 package com.example.demo.infrastructure;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "tools")
@@ -13,9 +14,8 @@ public class ToolsEntity {
     private String type;
     private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "shelter_id")
-    private ShelterEntity shelter;
+    @OneToMany(mappedBy = "tool")
+    private List<ShelterToolsEntity> shelterTools;
 
     public Long getId() {
         return id;
@@ -41,11 +41,11 @@ public class ToolsEntity {
         this.quantity = quantity;
     }
 
-    public ShelterEntity getShelter() {
-        return shelter;
+    public List<ShelterToolsEntity> getShelterTools() {
+        return shelterTools;
     }
 
-    public void setShelter(ShelterEntity shelter) {
-        this.shelter = shelter;
+    public void setShelterTools(List<ShelterToolsEntity> shelterTools) {
+        this.shelterTools = shelterTools;
     }
 }

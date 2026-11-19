@@ -20,6 +20,17 @@ public class StaffEntity {
     private JobTitleEnum jobTitle;
 
     private String licenseNumber;
+    @ManyToOne
+@JoinColumn(name = "clinic_id")
+private ClinicEntity clinic;
+
+public ClinicEntity getClinic() {
+    return clinic;
+}
+
+public void setClinic(ClinicEntity clinic) {
+    this.clinic = clinic;
+}
 
     // private Long shelterId;
 

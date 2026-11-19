@@ -9,18 +9,18 @@ public class ShelterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; 
-    
-    private String name; 
-    private String municipality; 
-    private int capacity; 
+    private Long id;
+
+    private String name;
+    private String municipality;
+    private int capacity;
 
     @OneToOne
     @JoinColumn(name = "manager_id")
     private StaffEntity manager;
 
-    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ToolsEntity> tools;
+    @OneToMany(mappedBy = "shelter", cascade = CascadeType.ALL)
+    private List<ShelterToolsEntity> shelterTools;
 
     public Long getId() {
         return id;
@@ -62,11 +62,11 @@ public class ShelterEntity {
         this.manager = manager;
     }
 
-    public List<ToolsEntity> getTools() {
-        return tools;
+    public List<ShelterToolsEntity> getShelterTools() {
+        return shelterTools;
     }
 
-    public void setTools(List<ToolsEntity> tools) {
-        this.tools = tools;
+    public void setShelterTools(List<ShelterToolsEntity> shelterTools) {
+        this.shelterTools = shelterTools;
     }
 }
