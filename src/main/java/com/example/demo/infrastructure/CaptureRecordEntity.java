@@ -13,9 +13,9 @@ public class CaptureRecordEntity {
 
     private LocalDate captureDate;
 
-    @ManyToOne
-    @JoinColumn(name = "citizen_id")
-    private CitizenProfileEntity citizen;
+    @OneToOne
+    @JoinColumn(name = "stray_report_id", unique = true)
+    private StrayReportEntity strayReport;
 
     @OneToOne
     @JoinColumn(name = "dog_id")
@@ -38,12 +38,12 @@ public class CaptureRecordEntity {
         this.captureDate = captureDate != null ? captureDate : LocalDate.now();
     }
 
-    public CitizenProfileEntity getCitizen() {
-        return citizen;
+    public StrayReportEntity getStrayReport() {
+        return strayReport;
     }
 
-    public void setCitizen(CitizenProfileEntity citizen) {
-        this.citizen = citizen;
+    public void setStrayReport(StrayReportEntity strayReport) {
+        this.strayReport = strayReport;
     }
 
     public DogEntity getDog() {
