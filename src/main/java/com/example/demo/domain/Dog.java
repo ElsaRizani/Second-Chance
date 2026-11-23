@@ -4,23 +4,20 @@ public class Dog {
     private Long id;
     private String name;
     private String breed;
+    private int estimatedAge;
     private DogStatusEnum status;
+    private String healthCondition;
+    private Long shelterId;
 
-    public Dog(Long id, String name, String breed, DogStatusEnum status){
+    public Dog(Long id, String name, String breed, int estimatedAge, DogStatusEnum status, String healthCondition,
+            Long shelterId) {
         this.id = id;
         this.name = name;
         this.breed = breed;
+        this.estimatedAge = estimatedAge;
         this.status = status;
-    }
-
-    public void markAsAdopted(){
-        if (this.status == DogStatusEnum.ADOPTED) {
-            throw new IllegalStateException("Ky qen eshte i adoptuar.");
-        }
-        if (this.status == DogStatusEnum.STRAY) {
-            throw new IllegalStateException("Nuk mund te adoptosh nje qen endacak pa e regjistruar ne strehimore.");
-        }
-        this.status = DogStatusEnum.ADOPTED;
+        this.healthCondition = healthCondition;
+        this.shelterId = shelterId;
     }
 
     public Long getId() {
@@ -35,9 +32,19 @@ public class Dog {
         return breed;
     }
 
+    public int getEstimatedAge() {
+        return estimatedAge;
+    }
+
     public DogStatusEnum getStatus() {
         return status;
     }
 
-    
+    public String getHealthCondition() {
+        return healthCondition;
+    }
+
+    public Long getShelterId() {
+        return shelterId;
+    }
 }
