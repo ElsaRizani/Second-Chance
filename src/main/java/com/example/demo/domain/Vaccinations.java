@@ -21,36 +21,21 @@ public class Vaccinations{
     public Long getID(){
         return id;
     }
-    public void setID(Long id){
-        this.id = id;
-    }
 
     public Long getDogID(){
         return dogID;
-    }
-    public void setDogID(Long dogID){
-        this.dogID = dogID;
     }
 
     public String getVaccineName(){
         return vaccineName;
     }
-    public void setVaccineName(String vaccineName){
-        this.vaccineName = vaccineName;
-    }
 
     public int getDose(){
         return dose;
     }
-    public void setDose(int dose){
-        this.dose = dose;
-    }
 
     public LocalDateTime getLastDoseDate(){
         return lastDoseDate;
-    }
-    public void setLastDoseDate(LocalDateTime lastDoseDate){
-        this.lastDoseDate = lastDoseDate;
     }
 
     //pas cdo 2 muajve bohet dosa tjeter (nese e dini qysh shkon muni me ndrru)
