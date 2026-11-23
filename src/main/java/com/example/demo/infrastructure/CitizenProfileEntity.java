@@ -23,16 +23,6 @@ public class CitizenProfileEntity {
 
     @OneToMany(mappedBy = "citizen", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SurrenderRecordEntity> surrenderRecords;
-    @OneToMany(mappedBy = "citizen", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CaptureRecordEntity> captureRecords;
-
-    public List<CaptureRecordEntity> getCaptureRecords() {
-        return captureRecords;
-    }
-
-    public void setCaptureRecords(List<CaptureRecordEntity> captureRecords) {
-        this.captureRecords = captureRecords;
-    }
 
     // Getters and Setters
     public Long getId() {

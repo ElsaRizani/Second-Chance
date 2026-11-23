@@ -14,6 +14,9 @@ public class StrayReportEntity {
     @JoinColumn(name = "reporter_id")
     private CitizenProfileEntity reporter;
 
+    @OneToOne(mappedBy = "strayReport", cascade = CascadeType.ALL, orphanRemoval = true)
+    private CaptureRecordEntity captureRecord;
+
     private String location;
     private String description;
     private String status;
@@ -35,6 +38,14 @@ public class StrayReportEntity {
 
     public void setReporter(CitizenProfileEntity reporter) {
         this.reporter = reporter;
+    }
+
+    public CaptureRecordEntity getCaptureRecord() {
+        return captureRecord;
+    }
+
+    public void setCaptureRecord(CaptureRecordEntity captureRecord) {
+        this.captureRecord = captureRecord;
     }
 
     public String getLocation() {
