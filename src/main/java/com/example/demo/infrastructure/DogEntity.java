@@ -1,24 +1,35 @@
 package com.example.demo.infrastructure;
 
+import com.example.demo.domain.DogStatusEnum;
 import jakarta.persistence.*;
 import java.util.List;
 
-@Entity 
+@Entity
 @Table(name = "dogs")
 public class DogEntity {
-    @Id 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String breed;
     private int estimatedAge;
     private String healthCondition;
-    private String status; //stray, in_shelter, adopted
+    @Enumerated(EnumType.STRING)
+    private DogStatusEnum status;
+    private Long shelterId;
 
-    @OneToMany (mappedBy = "dog", cascade = CascadeType.ALL)
+    public Long getShelterId() {
+        return shelterId;
+    }
+
+    public void setShelterId(Long shelterId) {
+        this.shelterId = shelterId;
+    }
+
+    @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL)
     private List<DogPhotoEntity> photos;
 
-    @OneToOne (mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
     private SurrenderRecordEntity surrenderRecord;
 
     @OneToOne(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -67,11 +78,11 @@ public class DogEntity {
         this.healthCondition = healthCondition;
     }
 
-    public String getStatus() {
+    public DogStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(DogStatusEnum status) {
         this.status = status;
     }
 

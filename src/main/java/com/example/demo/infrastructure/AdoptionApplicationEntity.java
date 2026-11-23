@@ -3,34 +3,36 @@ package com.example.demo.infrastructure;
 import jakarta.persistence.*; //built-in 'box' that has the @Entity,@Table and @Id that we need to talk to the database
 import java.time.LocalDate; //allows us to use dates, for ex. when the application was submitted
 
-import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties.Apiversion.Use;
+import com.example.demo.domain.ApplicationStatusEnum;
 
-@Entity 
+@Entity
 
-@Table(name = "adoption_applications") //this tells neon to add this specific table
+@Table(name = "adoption_applications") // this tells neon to add this specific table
 
 public class AdoptionApplicationEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    //it autoincrements the ID
-    //GenerationType is the different ways java can generate an ID. 4 main ones:
-        //IDENTITY (database's auto-increment feature).
-        //AUTO (lets hibernate decide).
-        //SEQUENCE (uses sequence object).
-        //TABLE (uses separate table to track IDs).
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // it autoincrements the ID
+    // GenerationType is the different ways java can generate an ID. 4 main ones:
+    // IDENTITY (database's auto-increment feature).
+    // AUTO (lets hibernate decide).
+    // SEQUENCE (uses sequence object).
+    // TABLE (uses separate table to track IDs).
     private Long id;
 
-    @ManyToOne 
-    @JoinColumn (name = "citizen_id")
-    private CitizenProfileEntity citizenId;
+    @ManyToOne
+    @JoinColumn(name = "citizen_id")
+    private CitizenProfileEntity citizen;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ApplicationStatusEnum status;
+
     private LocalDate applicationDate;
 
     @ManyToOne
-    @JoinColumn (name = "dog_id")
-    private DogEntity dogId;
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
 
     @OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
     private AdoptionContractEntity contract;
@@ -43,19 +45,19 @@ public class AdoptionApplicationEntity {
         this.id = id;
     }
 
-    public CitizenProfileEntity getCitizenId() {
-        return citizenId;
+    public CitizenProfileEntity getCitizen() {
+        return citizen;
     }
 
-    public void setCitizenId(CitizenProfileEntity citizenId) {
-        this.citizenId = citizenId;
+    public void setCitizen(CitizenProfileEntity citizen) {
+        this.citizen = citizen;
     }
 
-    public String getStatus() {
+    public ApplicationStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ApplicationStatusEnum status) {
         this.status = status;
     }
 
@@ -67,12 +69,12 @@ public class AdoptionApplicationEntity {
         this.applicationDate = applicationDate;
     }
 
-    public DogEntity getDogId() {
-        return dogId;
+    public DogEntity getDog() {
+        return dog;
     }
 
-    public void setDogId(DogEntity dogId) {
-        this.dogId = dogId;
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 
     public AdoptionContractEntity getContract() {
@@ -82,6 +84,5 @@ public class AdoptionApplicationEntity {
     public void setContract(AdoptionContractEntity contract) {
         this.contract = contract;
     }
-
 
 }
