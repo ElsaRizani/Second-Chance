@@ -6,33 +6,33 @@ public class AdoptionApplication {
     private Long id;
     private Long dogId;
     private Long citizenId;
-    private String status;
+    private ApplicationStatusEnum status;
     private LocalDate applicationDate;
 
     public AdoptionApplication(Long id, Long dogId, Long citizenId) {
         this.id = id;
         this.dogId = dogId;
         this.citizenId = citizenId;
-        this.status = "Dorezuar";
+        this.status = ApplicationStatusEnum.DOREZUAR;
         this.applicationDate = LocalDate.now();
     }
 
     // vetem aplikacionet e dorezuara mund te pranohen
     public void approve() {
-        if (!this.status.equals("Dorezuar")) {
-            throw new IllegalStateException("Nuk mund te pranohet. Statusi eshte: " + this.status);        
+        if (this.status != ApplicationStatusEnum.DOREZUAR) {
+            throw new IllegalStateException("Nuk mund te pranohet. Statusi eshte: " + this.status);
         }
-        //statusi ka ndryshuar nese nuk ka pas error
-        this.status = "Pranuar";
+        // statusi ka ndryshuar nese nuk ka pas error
+        this.status = ApplicationStatusEnum.PRANUAR;
     }
 
     // vetem aplikacionet e dorezuara mund te refuzohen
     public void reject() {
-        if (!this.status.equals("Dorezuar")) {
-            throw new IllegalStateException("Nuk mund te refuzohet. Statusi eshte: " + this.status);    
+        if (this.status != ApplicationStatusEnum.DOREZUAR) {
+            throw new IllegalStateException("Nuk mund te refuzohet. Statusi eshte: " + this.status);
         }
-        //statusi ka ndryshuar nese nuk ka pas error
-            this.status = "Refuzuar";
+        // statusi ka ndryshuar nese nuk ka pas error
+        this.status = ApplicationStatusEnum.REFUZUAR;
     }
 
     public Long getId() {
@@ -47,7 +47,7 @@ public class AdoptionApplication {
         return citizenId;
     }
 
-    public String getStatus() {
+    public ApplicationStatusEnum getStatus() {
         return status;
     }
 
