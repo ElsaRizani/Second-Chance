@@ -22,42 +22,24 @@ public class Appointment{
     public Long getID(){
         return id;
     }
-    public void setID(Long id){
-        this.id = id;
-    }
 
     public Long getDogID(){
         return dogID;
-    }
-    public void setDogID(Long dogID){
-        this.dogID = dogID;
     }
 
     public Long getStaffID(){
         return staffID;
     }
-    public void setStaffID(Long staffID){
-        this.staffID = staffID;
-    }
 
     public Long getClinicID(){
         return clinicID;
-    }
-    public void setClinicID(Long clinicID){
-        this.clinicID = clinicID;
     }
 
     public LocalDateTime getDateTime(){
         return dateTime;
     }
-    public void setDateTime(LocalDateTime dateTime){
-        this.dateTime = dateTime;
-    }
 
     public String getReason(){
         return reason;
-    }
-    public void setReason(String reason){
-        this.reason = reason;
     }
 }

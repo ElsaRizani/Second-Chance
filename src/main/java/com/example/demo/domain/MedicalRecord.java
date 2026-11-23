@@ -18,36 +18,21 @@ public class MedicalRecord {
     public Long getID(){
         return id;
     }
-    public void setID(Long id){
-        this.id = id;
-    }
 
     public Long getDogID(){
         return dogID;
-    }
-    public void setDogID(Long dogID){
-        this.dogID = dogID;
     }
 
     public Long getVaccineID(){
         return vaccineID;
     }
-    public void setVaccineID(Long vaccineID){
-        this.vaccineID = vaccineID;
-    }
 
     public Long getVetID(){
         return vetID;
     }
-    public void setVetID(Long vetID){
-        this.vetID = vetID;
-    }
 
     public String getDiagnosis(){
         return diagnosis;
-    }
-    public void setDiagnosis(String diagnosis){
-        this.diagnosis = diagnosis;
     }
 }
 
