@@ -49,6 +49,9 @@ public class AdoptionService {
 
         // e ruajme procesin
         applicationRepository.save(entity);
+
+        dog.setStatus(DogStatusEnum.PENDING_ADOPTION);
+        dogRepository.save(dog);
     }
 
     // workflow 2: e aprovojme aplikacioning, > e krijojme kontraten, > qeni adoptohet
@@ -64,6 +67,7 @@ public class AdoptionService {
                 entity.getId(),
                 entity.getDog().getId(),
                 entity.getCitizen().getId());
+                app.setStatus(entity.getStatus()); 
         app.approve();
 
         // e ruajme statusin e ri te aplikimit

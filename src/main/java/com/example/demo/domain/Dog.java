@@ -47,4 +47,20 @@ public class Dog {
     public Long getShelterId() {
         return shelterId;
     }
+
+    public void setStatus(DogStatusEnum status) {
+        this.status = status;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHealthCondition(String healthCondition) {
+        this.healthCondition = healthCondition;
+    }
+
+    public void setShelterId(Long shelterId) {
+        this.shelterId = shelterId;
+    }
 }

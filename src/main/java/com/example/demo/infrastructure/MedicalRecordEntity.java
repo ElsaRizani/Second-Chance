@@ -1,57 +1,65 @@
 package com.example.demo.infrastructure;
+
 import jakarta.persistence.*;
-@Entity 
+
+@Entity
+@Table(name = "medical_records")
 public class MedicalRecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn (name = "dogID")
-    private DogEntity dogID;
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
 
-    @OneToOne 
-    @JoinColumn (name = "vaccineID")
-    private VaccinationsEntity vaccineID;
+    @OneToOne
+    @JoinColumn(name = "vaccine_id")
+    private VaccinationsEntity vaccine;
 
-    @ManyToOne 
-    @JoinColumn(name = "vetID")
-    private StaffEntity vetID;
+    @ManyToOne
+    @JoinColumn(name = "vet_id")
+    private StaffEntity vet;
 
     private String diagnosis;
 
-    public Long getID(){
+    public Long getId() {
         return id;
     }
-    public void setID(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public DogEntity getDogID(){
-        return dogID;
-    }
-    public void setDogID(DogEntity dogID){
-        this.dogID = dogID;
+    public DogEntity getDog() {
+        return dog;
     }
 
-    public VaccinationsEntity getVaccineID(){
-        return vaccineID;
-    }
-    public void setVaccineID(VaccinationsEntity vaccineID){
-        this.vaccineID = vaccineID;
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
 
-    public StaffEntity getVetID(){
-        return vetID;
-    }
-    public void setVetID(StaffEntity vetID){
-        this.vetID = vetID;
+    public VaccinationsEntity getVaccine() {
+        return vaccine;
     }
 
-    public String getDiagnosis(){
+    public void setVaccine(VaccinationsEntity vaccine) {
+        this.vaccine = vaccine;
+    }
+
+    public StaffEntity getVet() {
+        return vet;
+    }
+
+    public void setVet(StaffEntity vet) {
+        this.vet = vet;
+    }
+
+    public String getDiagnosis() {
         return diagnosis;
     }
-    public void setDiagnosis(String diagnosis){
+
+    public void setDiagnosis(String diagnosis) {
         this.diagnosis = diagnosis;
     }
 }
