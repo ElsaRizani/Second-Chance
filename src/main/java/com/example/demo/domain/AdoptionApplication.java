@@ -35,6 +35,14 @@ public class AdoptionApplication {
         this.status = ApplicationStatusEnum.REFUZUAR;
     }
 
+    public void setStatus(ApplicationStatusEnum status) {
+        this.status = status;
+    }
+
+    public void setApplicationDate(LocalDate applicationDate) {
+        this.applicationDate = applicationDate;
+    }
+
     public Long getId() {
         return id;
     }

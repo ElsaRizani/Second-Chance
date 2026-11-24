@@ -34,7 +34,8 @@ public class AdoptionApplicationEntity {
     @JoinColumn(name = "dog_id")
     private DogEntity dog;
 
-    @OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contract_id")
     private AdoptionContractEntity contract;
 
     public Long getId() {

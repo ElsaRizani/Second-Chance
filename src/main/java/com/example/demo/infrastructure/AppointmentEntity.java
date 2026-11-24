@@ -2,55 +2,54 @@ package com.example.demo.infrastructure;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+
 @Entity 
+@Table(name = "appointments")
 public class AppointmentEntity {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne 
-    @JoinColumn(name = "dogID")
-    private DogEntity dogID;
+    @JoinColumn(name = "dog_id")
+    private DogEntity dog;
 
     @ManyToOne 
-    @JoinColumn(name = "staffID")
-    private StaffEntity staffID;
+    @JoinColumn(name = "staff_id")
+    private StaffEntity staff;
 
     @ManyToOne 
-    @JoinColumn(name = "clinicID")
-    private ClinicEntity clinicID;
+    @JoinColumn(name = "clinic_id")
+    private ClinicEntity clinic;
 
     private LocalDateTime dateTime;
     private String reason;
 
-    public Long getID(){
+    public Long getId(){
         return id;
     }
-    public void setID(Long id){
+    public void setId(Long id){
         this.id = id;
     }
 
-    public DogEntity getDogID(){
-        return dogID;
+    public DogEntity getDog() {
+        return dog;
     }
-    public void setDogID(DogEntity dogID){
-        this.dogID = dogID;
+    public void setDog(DogEntity dog) {
+        this.dog = dog;
     }
-
-    public StaffEntity getStaffID(){
-        return staffID;
+    public StaffEntity getStaff() {
+        return staff;
     }
-    public void setStaffID(StaffEntity staffID){
-        this.staffID = staffID;
+    public void setStaff(StaffEntity staff) {
+        this.staff = staff;
     }
-
-    public ClinicEntity getClinicID(){
-        return clinicID;
+    public ClinicEntity getClinic() {
+        return clinic;
     }
-    public void setClinicID(ClinicEntity clinicID){
-        this.clinicID = clinicID;
+    public void setClinic(ClinicEntity clinic) {
+        this.clinic = clinic;
     }
-
     public LocalDateTime getDateTime(){
         return dateTime;
     }

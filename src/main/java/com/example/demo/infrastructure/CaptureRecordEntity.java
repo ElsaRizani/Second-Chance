@@ -17,10 +17,6 @@ public class CaptureRecordEntity {
     @JoinColumn(name = "stray_report_id", unique = true)
     private StrayReportEntity strayReport;
 
-    @OneToOne
-    @JoinColumn(name = "dog_id")
-    private DogEntity dog;
-
     // Getters and Setters
     public Long getId() {
         return id;
@@ -46,11 +42,4 @@ public class CaptureRecordEntity {
         this.strayReport = strayReport;
     }
 
-    public DogEntity getDog() {
-        return dog;
-    }
-
-    public void setDog(DogEntity dog) {
-        this.dog = dog;
-    }
 }

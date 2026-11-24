@@ -21,7 +21,20 @@ public class AdoptionContract {
         if (!this.feePaid) {
             throw new IllegalStateException("Nuk mund te finalizohet kontrata. Pagesa nuk eshte kryer.");
         }
-        this.status = ContractStatusEnum.DRAFT;
+        // kontrata behet finalized kur paguhet
+        this.status = ContractStatusEnum.FINALIZED;
+    }
+
+    public void setStatus(ContractStatusEnum status) {
+        this.status = status;
+    }
+
+    public void setContractDate(LocalDate contractDate) {
+        this.contractDate = contractDate;
+    }
+
+    public void setFeePaid(boolean feePaid) {
+        this.feePaid = feePaid;
     }
 
     public Long getId() {
