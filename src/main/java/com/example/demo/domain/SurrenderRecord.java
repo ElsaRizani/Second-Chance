@@ -6,18 +6,16 @@ public class SurrenderRecord {
     private Long id;
     private String name;
     private String lastName;
-    private int citizenId;
+    private Long citizenId;
     private String reason;
-    private int dogId;
     private LocalDate surrenderDate;
 
-    public SurrenderRecord(Long id, String name, String lastName, int citizenId, String reason, int dogId, LocalDate surrenderDate) {
+    public SurrenderRecord(Long id, String name, String lastName, Long citizenId, String reason, LocalDate surrenderDate) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.citizenId = citizenId;
         this.reason = reason;
-        this.dogId = dogId;
         this.surrenderDate = surrenderDate != null ? surrenderDate : LocalDate.now();
     }
 
@@ -33,16 +31,12 @@ public class SurrenderRecord {
         return lastName;
     }
 
-    public int getCitizenId() {
+    public Long getCitizenId() {
         return citizenId;
     }
 
     public String getReason() {
         return reason;
-    }
-
-    public int getDogId() {
-        return dogId;
     }
 
     public LocalDate getSurrenderDate() {

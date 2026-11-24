@@ -20,8 +20,7 @@ public class SurrenderRecordEntity {
     @JoinColumn(name = "citizen_id")
     private CitizenProfileEntity citizen;
 
-    @OneToOne
-    @JoinColumn(name = "dog_id")
+    @OneToOne(mappedBy = "surrenderRecord")
     private DogEntity dog;
 
     // Getters and Setters

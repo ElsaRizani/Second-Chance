@@ -16,9 +16,8 @@ public class CaptureRecordEntity {
     @OneToOne
     @JoinColumn(name = "stray_report_id", unique = true)
     private StrayReportEntity strayReport;
-
-    @OneToOne
-    @JoinColumn(name = "dog_id")
+    
+    @OneToOne(mappedBy = "captureRecord")
     private DogEntity dog;
 
     // Getters and Setters

@@ -29,14 +29,19 @@ public class DogEntity {
     @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL)
     private List<DogPhotoEntity> photos;
 
-    @OneToOne(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "surrender_record_id")
     private SurrenderRecordEntity surrenderRecord;
 
-    @OneToOne(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "capture_record_id")
     private CaptureRecordEntity captureRecord;
 
     @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EmergencyCaseEntity> emergencyCases;
+
+    @OneToMany(mappedBy = "dog")
+    private List<VaccinationsEntity> vaccinations;
 
     public Long getId() {
         return id;
