@@ -17,6 +17,12 @@ public class EmergencyCase {
         this.reportedDate = reportedDate != null ? reportedDate : LocalDate.now();
     }
 
+    public void updateStatus(String newStatus) {
+        if (newStatus == null || newStatus.isBlank()) {
+            throw new IllegalArgumentException("Statusi nuk mund të jetë bosh.");
+        }
+        this.status = newStatus;
+    }
     public Long getId() {
         return id;
     }
