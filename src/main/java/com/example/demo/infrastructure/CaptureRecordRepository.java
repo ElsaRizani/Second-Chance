@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CaptureRecordRepository extends JpaRepository<CaptureRecordEntity, Long> {
+    boolean existsByStrayReport_Id(Long strayReportId);
 }

@@ -4,14 +4,15 @@ import java.time.LocalDate;
 
 public class CaptureRecord {
     private Long id;
-    private int staffId;
-    private int dogId;
+    private Long strayReportId;
     private LocalDate captureDate;
 
-    public CaptureRecord(Long id, int staffId, int dogId, LocalDate captureDate) {
+    public CaptureRecord(Long id, Long strayReportId, LocalDate captureDate) {
+        if (strayReportId == null) {
+            throw new IllegalArgumentException("Stray report ID nuk mund te jete bosh.");
+        }
         this.id = id;
-        this.staffId = staffId;
-        this.dogId = dogId;
+        this.strayReportId = strayReportId;
         this.captureDate = captureDate != null ? captureDate : LocalDate.now();
     }
 
@@ -19,12 +20,8 @@ public class CaptureRecord {
         return id;
     }
 
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public int getDogId() {
-        return dogId;
+    public Long getStrayReportId() {
+        return strayReportId;
     }
 
     public LocalDate getCaptureDate() {

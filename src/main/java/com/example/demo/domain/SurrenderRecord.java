@@ -4,25 +4,43 @@ import java.time.LocalDate;
 
 public class SurrenderRecord {
     private Long id;
+    private Long citizenId;
     private String name;
     private String lastName;
-    private int citizenId;
     private String reason;
-    private int dogId;
     private LocalDate surrenderDate;
 
-    public SurrenderRecord(Long id, String name, String lastName, int citizenId, String reason, int dogId, LocalDate surrenderDate) {
+    public SurrenderRecord(Long id, Long citizenId, String name, String lastName, String reason, LocalDate surrenderDate) {
+        if (citizenId == null) {
+            throw new IllegalArgumentException("Citizen ID nuk mund te jete bosh.");
+        }
         this.id = id;
-        this.name = name;
-        this.lastName = lastName;
         this.citizenId = citizenId;
-        this.reason = reason;
-        this.dogId = dogId;
+        updateDetails(name, lastName, reason, surrenderDate);
+    }
+
+    public void updateDetails(String name, String lastName, String reason, LocalDate surrenderDate) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Emri eshte i detyrueshem.");
+        }
+        if (lastName == null || lastName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Mbiemri eshte i detyrueshem.");
+        }
+        if (reason == null || reason.trim().isEmpty()) {
+            throw new IllegalArgumentException("Arsyeja eshte e detyrueshme.");
+        }
+        this.name = name.trim();
+        this.lastName = lastName.trim();
+        this.reason = reason.trim();
         this.surrenderDate = surrenderDate != null ? surrenderDate : LocalDate.now();
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Long getCitizenId() {
+        return citizenId;
     }
 
     public String getName() {
@@ -33,16 +51,8 @@ public class SurrenderRecord {
         return lastName;
     }
 
-    public int getCitizenId() {
-        return citizenId;
-    }
-
     public String getReason() {
         return reason;
-    }
-
-    public int getDogId() {
-        return dogId;
     }
 
     public LocalDate getSurrenderDate() {
