@@ -2,54 +2,61 @@ package com.example.demo.infrastructure;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import com.example.demo.domain.Appointment.AppointmentStatusEnum;
 
-@Entity 
+@Entity
 @Table(name = "appointments")
 public class AppointmentEntity {
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "dog_id")
     private DogEntity dog;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "staff_id")
     private StaffEntity staff;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "clinic_id")
     private ClinicEntity clinic;
 
     private LocalDateTime dateTime;
     private String reason;
 
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatusEnum status;
+
     public Long getId(){
         return id;
     }
-    public void setId(Long id){
+    public void setID(Long id){
         this.id = id;
     }
 
-    public DogEntity getDog() {
+    public DogEntity getDog(){
         return dog;
     }
-    public void setDog(DogEntity dog) {
+    public void setDog(DogEntity dog){
         this.dog = dog;
     }
-    public StaffEntity getStaff() {
+
+    public StaffEntity getStaff(){
         return staff;
     }
-    public void setStaff(StaffEntity staff) {
+    public void setStaff(StaffEntity staff){
         this.staff = staff;
     }
-    public ClinicEntity getClinic() {
+
+    public ClinicEntity getClinic(){
         return clinic;
     }
-    public void setClinic(ClinicEntity clinic) {
+    public void setClinic(ClinicEntity clinic){
         this.clinic = clinic;
     }
+
     public LocalDateTime getDateTime(){
         return dateTime;
     }
@@ -62,5 +69,12 @@ public class AppointmentEntity {
     }
     public void setReason(String reason){
         this.reason = reason;
+    }
+
+    public AppointmentStatusEnum getStatus(){
+        return status;
+    }
+    public void setStatus(AppointmentStatusEnum status){
+        this.status = status;
     }
 }

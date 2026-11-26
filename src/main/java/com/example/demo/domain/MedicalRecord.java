@@ -35,4 +35,3 @@ public class MedicalRecord {
         return diagnosis;
     }
 }
-

@@ -1,74 +1,64 @@
 package com.example.demo.infrastructure;
-
 import java.time.LocalDateTime;
+
+import org.springframework.cglib.core.Local;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "vaccinations")
 public class VaccinationsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "dog_id")
-    private DogEntity dog;
+    @JoinColumn(name = "dogID")
+    private DogEntity dogId;
 
     private String vaccineName;
     private int dose;
     private LocalDateTime lastDoseDate;
     private LocalDateTime nextDoseDate;
 
-    public Long getId() {
+    public Long getId(){
         return id;
     }
-
-    public void setId(Long id) {
+    public void setId(Long id){
         this.id = id;
     }
-    
-    public DogEntity getDog() {
-        return dog;
+
+    public DogEntity getDogId(){
+        return dogId;
+    }
+    public void setDogId(DogEntity dogId){
+        this.dogId = dogId;
     }
 
-    public void setDog(DogEntity dog) {
-        this.dog = dog;
-    }
-
-    public void setNextDoseDate(LocalDateTime nextDoseDate) {
-        this.nextDoseDate = nextDoseDate;
-    }
-
-    public String getVaccineName() {
+    public String getVaccineName(){
         return vaccineName;
     }
-
-    public void setVaccineName(String vaccineName) {
+    public void setVaccineName(String vaccineName){
         this.vaccineName = vaccineName;
     }
 
-    public int getDose() {
+    public int getDose(){
         return dose;
     }
-
-    public void setDose(int dose) {
+    public void setDose(int dose){
         this.dose = dose;
     }
 
-    public LocalDateTime getLastDoseDate() {
+    public LocalDateTime getLastDoseDate(){
         return lastDoseDate;
     }
-
-    public void setLastDoseDate(LocalDateTime lastDoseDate) {
+    public void setLastDoseDate(LocalDateTime lastDoseDate){
         this.lastDoseDate = lastDoseDate;
     }
 
-    // pas cdo 2 muajve bohet dosa tjeter (nese e dini qysh shkon muni me ndrru)
     public LocalDateTime getNextDoseDate() {
-        if (this.lastDoseDate == null) {
-            return null;
-        }
-        nextDoseDate = this.lastDoseDate.plusMonths(2);
         return nextDoseDate;
+    }
+    public void setNextDoseDate(LocalDateTime nextDoseDate){
+        this.nextDoseDate = nextDoseDate;
     }
 }
