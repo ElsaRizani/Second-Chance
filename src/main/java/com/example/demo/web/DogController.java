@@ -1,4 +1,3 @@
-
 package com.example.demo.web;
 
 import com.example.demo.application.DogService;
@@ -16,38 +15,34 @@ public class DogController {
     }
 
     @PostMapping("/capture")
-    public Long registerFromCapture(
-            @RequestParam String name,
-            @RequestParam String breed,
-            @RequestParam int age,
-            @RequestParam String health,
-            @RequestParam Long shelterId,
-            @RequestParam Long captureId) {
-        
-        return dogService.registerDogFromCapture(name, breed, age, health, shelterId, captureId);
+    public Long registerFromCapture(@RequestBody CaptureRequest request) {
+        return dogService.registerDogFromCapture(
+                request.name(),
+                request.breed(),
+                request.age(),
+                request.health(),
+                request.shelterId(),
+                request.captureId()
+        );
     }
 
     @PostMapping("/surrender")
-    public Long registerFromSurrender(
-            @RequestParam String name,
-            @RequestParam String breed,
-            @RequestParam int age,
-            @RequestParam String health,
-            @RequestParam Long shelterId,
-            @RequestParam Long surrenderId) {
-        
-        return dogService.registerDogFromSurrender(name, breed, age, health, shelterId, surrenderId);
+    public Long registerFromSurrender(@RequestBody SurrenderDogRequest request) {
+        return dogService.registerDogFromSurrender(
+                request.name(),
+                request.breed(),
+                request.age(),
+                request.health(),
+                request.shelterId(),
+                request.surrenderId()
+        );
     }
 
     @PostMapping("/{dogId}/photo")
     public String addPhoto(
             @PathVariable Long dogId,
-            @RequestParam String url,
-            @RequestParam boolean isPrimary) {
-        
-
-                //i dergojme te dhenat ne DogService.java
-        dogService.addPhoto(dogId, url, isPrimary);
+            @RequestBody DogPhotoRequest request) {
+        dogService.addPhoto(dogId, request.url(), request.isPrimary());
         return "Foto u shtua me sukses per qenin me ID: " + dogId;
     }
 }

@@ -13,21 +13,15 @@ public class AdoptionController {
         this.adoptionService = adoptionService;
     }
 
-    @GetMapping("/apply")
-    public String submitApplication(
-            @RequestParam Long dogId,
-            @RequestParam Long citizenId) {
-        
-        adoptionService.submitApplication(dogId, citizenId);
-        return "Aplikimi per adoptim u dergua me sukses per qenin me ID: " + dogId;
+    @PostMapping("/apply")
+    public String submitApplication(@RequestBody AdoptionApplicationRequest request) {
+        adoptionService.submitApplication(request.dogId(), request.citizenId());
+        return "Aplikimi per adoptim u dergua me sukses per qenin me ID: " + request.dogId();
     }
 
-    @GetMapping("/approve")
-    public String approveApplication(
-            @RequestParam Long applicationId,
-            @RequestParam boolean feePaid) {
-        
-        adoptionService.approveApplication(applicationId, feePaid);
-        return "Aplikimi me ID " + applicationId + " u aprovua! Kontrata u krijua dhe qeni u adoptua.";
+    @PostMapping("/approve")
+    public String approveApplication(@RequestBody AdoptionApproveRequest request) {
+        adoptionService.approveApplication(request.applicationId(), request.feePaid());
+        return "Aplikimi me ID " + request.applicationId() + " u aprovua! Kontrata u krijua dhe qeni u adoptua.";
     }
 }
