@@ -13,6 +13,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, unique = true)
     private String email;
     private String passwordHash;
     @Enumerated(EnumType.STRING)
@@ -27,8 +28,6 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<AuditLogEntity> auditLogs;
-
-    
 
     // Getters and Setters
     public Long getId() {

@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;//contains built in
 
 import org.springframework.stereotype.Repository;//tells spring boot to talk to the database
 
+import com.example.demo.domain.ApplicationStatusEnum;
+
 @Repository
 //the @ declares an -Annotation/or it acts as a sticky note and combined with the Repository it tells us that its a tool to command the database
 
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;//tells spring boot to talk to 
 //Long is the long numer of the ID and manages the AdoptionApplicationEntity table
 //
 public interface AdoptionApplicationRepository extends JpaRepository<AdoptionApplicationEntity, Long> {
-    
+    boolean existsByDogIdAndCitizenIdAndStatus(Long dogId, Long citizenId, ApplicationStatusEnum status);
 }

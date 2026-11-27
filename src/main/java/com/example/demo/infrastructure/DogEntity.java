@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "dogs")
+@Table(name = "dogs", uniqueConstraints = {
+    @UniqueConstraint(columnNames = { "name", "breed" })
+})
 public class DogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,18 +28,18 @@ public class DogEntity {
         this.shelterId = shelterId;
     }
 
-    @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dog", cascade = CascadeType.MERGE)
     private List<DogPhotoEntity> photos;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "surrender_record_id")
     private SurrenderRecordEntity surrenderRecord;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "capture_record_id")
     private CaptureRecordEntity captureRecord;
 
-    @OneToMany(mappedBy = "dog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "dog", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<EmergencyCaseEntity> emergencyCases;
 
     public Long getId() {
