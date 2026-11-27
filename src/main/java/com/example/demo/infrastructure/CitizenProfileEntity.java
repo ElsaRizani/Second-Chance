@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "citizenProfile")
+@Table(name = "citizenProfile", uniqueConstraints = {
+    @UniqueConstraint(name = "citizen_user", columnNames = { "user_id" }),
+    @UniqueConstraint(name = "citizen_phone", columnNames = { "phone" })
+})
 public class CitizenProfileEntity {
 
     @Id
